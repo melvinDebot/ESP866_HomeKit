@@ -41,7 +41,10 @@ void loop() {
   if (currentMotion != motionDetected) {
     motionDetected = currentMotion;
     cha_motion_detected.value.bool_value = motionDetected;
+
+    // Envoi de la notification
     homekit_characteristic_notify(&cha_motion_detected, cha_motion_detected.value);
+
     Serial.print("Présence : ");
     Serial.println(motionDetected ? "Détectée" : "Aucune");
   }
